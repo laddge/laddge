@@ -3,6 +3,7 @@ import os
 import re
 import shutil
 
+import reducss
 import sass
 
 
@@ -30,6 +31,9 @@ def generate():
         dirname=(os.path.join(srcdir, ".ignore/scss"), os.path.join(distdir, "css")),
         output_style="compressed",
     )
+
+    # reduce css
+    reducss.auto(distdir)
 
 
 if __name__ == "__main__":
