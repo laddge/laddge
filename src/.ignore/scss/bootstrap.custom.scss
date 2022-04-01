@@ -42,3 +42,21 @@
 
 // Utilities
 @import "../bootstrap/scss/utilities/api";
+
+.bg-cover { background-size: cover; }
+
+$filters: ("blur", 1px), ("brightness", .2);
+@each $filter in $filters {
+    $prop: nth($filter, 1);
+    $unit: nth($filter, 2);
+    @for $i from 0 through 10 {
+        .#{$prop}-#{$i} {
+            -webkit-filter: #{$prop}"(#{$unit * $i})";
+            filter: #{$prop}"(#{$unit * $i})";
+        }
+        .bg-#{$prop}-#{$i} {
+            -webkit-backdrop-filter: #{$prop}"(#{$unit * $i})";
+            backdrop-filter: #{$prop}"(#{$unit * $i})";
+        }
+    }
+}
