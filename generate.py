@@ -3,6 +3,8 @@ import os
 import re
 import shutil
 
+import sass
+
 
 def generate():
     # settings
@@ -22,6 +24,12 @@ def generate():
         os.makedirs(os.path.dirname(saveto), exist_ok=True)
         if os.path.isfile(path):
             shutil.copy(path, saveto)
+
+    # build css
+    sass.compile(
+        dirname=(os.path.join(srcdir, ".ignore/scss"), os.path.join(distdir, "css")),
+        output_style="compressed",
+    )
 
 
 if __name__ == "__main__":
