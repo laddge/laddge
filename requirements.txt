@@ -1,3 +1,4 @@
 libsass
 reducss
 fonttools
+brotli
