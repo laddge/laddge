@@ -46,17 +46,31 @@
 .bg-cover { background-size: cover; }
 
 $filters: ("blur", 1px), ("brightness", .2);
-@each $filter in $filters {
-    $prop: nth($filter, 1);
-    $unit: nth($filter, 2);
-    @for $i from 0 through 10 {
-        .#{$prop}-#{$i} {
-            -webkit-filter: #{$prop}"(#{$unit * $i})";
-            filter: #{$prop}"(#{$unit * $i})";
+@for $i from 1 through 2 {
+    $filter1: nth($filters, $i);
+    $filter2: nth($filters, $i % 2 + 1);
+    $prop1: nth($filter1, 1);
+    $prop2: nth($filter2, 1);
+    $unit1: nth($filter1, 2);
+    $unit2: nth($filter2, 2);
+    @for $j from 0 through 1 {
+        $csuf: "";
+        $psuf: "";
+        @if ($j == 1) {
+            $csuf: "bd-";
+            $psuf: "backdrop-";
         }
-        .bg-#{$prop}-#{$i} {
-            -webkit-backdrop-filter: #{$prop}"(#{$unit * $i})";
-            backdrop-filter: #{$prop}"(#{$unit * $i})";
+        @for $k from 0 through 10 {
+            .#{$csuf}#{$prop1}-#{$k} {
+                -webkit-#{$psuf}filter: unquote("#{$prop1}(#{$unit1 * $k})");
+                #{$psuf}filter: unquote("#{$prop1}(#{$unit1 * $k})");
+                @for $l from 0 through 10 {
+                    &-#{$prop2}-#{$l} {
+                        -webkit-#{$psuf}filter: unquote("#{$prop1}(#{$unit1 * $k}) #{$prop2}(#{$unit2 * $l})");
+                        #{$psuf}filter: unquote("#{$prop1}(#{$unit1 * $k}) #{$prop2}(#{$unit2 * $l})");
+                    }
+                }
+            }
         }
     }
 }
