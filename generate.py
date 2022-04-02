@@ -2,6 +2,7 @@ import glob
 import os
 import re
 import shutil
+import subprocess
 
 import fontTools.subset
 import reducss
@@ -56,6 +57,17 @@ def generate():
     args.append("--output-file=" + os.path.join(distdir, f"fonts/{output}"))
     os.makedirs(os.path.join(distdir, "fonts"), exist_ok=True)
     fontTools.subset.main(args)
+
+    # cache buster
+    commit_id = subprocess.run(
+        "git rev-parse --short HEAD", shell=True, capture_output=True, text=True
+    ).stdout.strip("\n")
+    for html in htmls:
+        with open(html) as f:
+            htmlstr = f.read()
+        htmlstr = htmlstr.format(commit_id=commit_id)
+        with open(html, "w") as f:
+            f.write(htmlstr)
 
 
 if __name__ == "__main__":
