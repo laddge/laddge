@@ -68,6 +68,11 @@ def generate():
         htmlstr = htmlstr.format(commit_id=commit_id)
         with open(html, "w") as f:
             f.write(htmlstr)
+    csspath = os.path.join(distdir, "css/bootstrap.custom.css")
+    with open(csspath) as f:
+        cssstr = f.read()
+    with open(csspath, "w") as f:
+        f.write(cssstr.replace(".woff2", f".woff2?{commit_id}"))
 
 
 if __name__ == "__main__":
