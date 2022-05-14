@@ -11,7 +11,12 @@ if (document.defaultView.getComputedStyle(document.getElementById('sidebar'), nu
             document.getElementById('twitterDesc').innerText = data.desc;
             document.getElementById('twitterFollow').innerText += data.follow;
             document.getElementById('twitterFollower').innerText += data.follower;
-            twemoji.parse(document.getElementById('twitterCardBody'));
+            const el = document.createElement('script');
+            el.onload = function () {
+                twemoji.parse(document.getElementById('twitterCardBody'));
+            }
+            el.src= 'https://twemoji.maxcdn.com/v/latest/twemoji.min.js';
+            document.body.appendChild(el);
             document.getElementById('twitterCard').classList.remove('d-none');
         })
         .catch(err => {
