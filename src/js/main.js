@@ -1,6 +1,6 @@
 const cardAPIInstance = new CardAPI('cardapi', '\
     <div class="card mt-3 me-3 d-inline-block" style="width: 18rem;">\
-    <img class="bd-placeholder-img card-img-top w-100" src="{{ image }}">\
+    <img class="bd-placeholder-img card-img-top w-100" src="{{ image }}" style="width: 18rem; height: 9rem;">\
     <div class="card-body">\
     <h3 class="card-title w-100 text-truncate my-0">{{ title }}</h3>\
     <div class="card-text w-100 text-truncate-2 text-secondary small mt-1">{{ description }}</div>\
