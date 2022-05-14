@@ -41,7 +41,7 @@ function loadCards() {
     cardLoaded = true;
 }
 
-if (document.getElementById('products').getBoundingClientRect().top + window.pageYOffset < document.documentElement.scrollTop) {
+if (document.getElementById('products').getBoundingClientRect().top + window.pageYOffset < window.innerHeight) {
     loadCards();
 }
 
