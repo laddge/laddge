@@ -77,5 +77,54 @@ $filters: ("blur", 1px), ("brightness", .2);
 
 .bg-ldg { background-color: #28a3cc; }
 
+@for $i from 1 through 5 {
+    .text-truncate-#{$i} {
+        display: -webkit-box;
+        -webkit-line-clamp: #{$i};
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5em;
+        height: #{$i} * 1.5em;
+    }
+}
+
+.horizon-list {
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 0;
+
+    &> * {
+        white-space: normal;
+        font-size: 1rem;
+    }
+}
+
+.link-twitter { color: #1da1f2 !important; }
+.link-github { color: #333 !important; }
+.link-instagram { color: #c13584 !important; }
+.link-line { color: #06c755 !important; }
+
+.bg-sidebar { background-color: $blue-300; }
+
+.gt {
+    width: .7rem;
+    height: .7rem;
+    border-width: 2px 2px 0 0;
+    border-style: solid;
+    border-color: $dark;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+#twitterImage {
+    margin-top: -2.5vw;
+    height: 5vw;
+    width: 5vw;
+}
+
+#twitterCardBody img {
+    height: 1em;
+}
+
 @import "fonts";
 .mplus2 { font-family: "M PLUS 2", sans-serif; }
