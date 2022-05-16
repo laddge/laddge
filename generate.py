@@ -84,6 +84,14 @@ def generate():
     with open(csspath, "w") as f:
         f.write(cssstr.replace(".woff2", f".woff2?{commit_id}"))
 
+    # minify html
+    with open(os.path.join(distdir, "index.html")) as f:
+        htmlstr = f.read()
+    htmlstr = "".join([s.strip() for s in htmlstr.split("\n")])
+    htmlstr = re.sub("<!--.*?-->", "", htmlstr)
+    with open(os.path.join(distdir, "index.html"), "w") as f:
+        f.write(htmlstr)
+
 
 if __name__ == "__main__":
     generate()
