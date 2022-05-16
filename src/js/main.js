@@ -30,6 +30,12 @@ function loadCards() {
     if (cardLoaded) {
         return;
     }
+    const cssel = document.createElement('link');
+    const commitId = document.getElementById('commitId').value;
+    cssel.rel = "stylesheet";
+    cssel.type = "text/css";
+    cssel.href = "/css/card.css?" + commitId;
+    document.getElementsByTagName('head')[0].appendChild(cssel);
     const el = document.createElement('script');
     el.onload = function () {
         const cardAPIInstance = new CardAPI('cardapi', '\

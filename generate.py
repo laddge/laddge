@@ -36,7 +36,17 @@ def generate():
     )
 
     # reduce css
-    reducss.auto(distdir)
+    with open(os.path.join(srcdir, "index.html")) as f:
+        index_html = f.read()
+    with open(os.path.join(srcdir, ".ignore/card.html")) as f:
+        card_html = f.read()
+    with open(os.path.join(distdir, "css/bootstrap.custom.css")) as f:
+        cssstr = f.read()
+    with open(os.path.join(distdir, "css/main.css"), "w") as f:
+        f.write(reducss.reduce(index_html, cssstr))
+    with open(os.path.join(distdir, "css/card.css"), "w") as f:
+        f.write(reducss.reduce(card_html, cssstr))
+    os.remove(os.path.join(distdir, "css/bootstrap.custom.css"))
 
     # subset fonts
     htmls = glob.glob(os.path.join(distdir, "**/*.html"), recursive=True)
@@ -68,7 +78,7 @@ def generate():
         htmlstr = htmlstr.format(commit_id=commit_id)
         with open(html, "w") as f:
             f.write(htmlstr)
-    csspath = os.path.join(distdir, "css/bootstrap.custom.css")
+    csspath = os.path.join(distdir, "css/main.css")
     with open(csspath) as f:
         cssstr = f.read()
     with open(csspath, "w") as f:
