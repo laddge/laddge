@@ -1,0 +1,8 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Laddge",
+    "url": "https://laddge.net/",
+    "birthDate": "2004-06-28",
+    "image": "https://github.com/laddge.png",
+}
