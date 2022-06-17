@@ -75,7 +75,7 @@ def generate():
     for html in htmls:
         with open(html) as f:
             htmlstr = f.read()
-        htmlstr = htmlstr.format(commit_id=commit_id)
+        htmlstr = htmlstr.replace("{commit_id}", commit_id)
         with open(html, "w") as f:
             f.write(htmlstr)
     csspath = os.path.join(distdir, "css/main.css")
