@@ -1,0 +1,42 @@
+name: Metrics
+
+on:
+  schedule:
+    - cron: 0 15 * * * # 0000 JST
+
+  workflow_dispatch:
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          # Core
+          user: laddge
+          template: classic
+          base: activity, community, metadata
+          config_timezone: Asia/Tokyo
+          base_indepth: true
+          
+          # Languages activity
+          plugin_languages: true
+          plugin_languages_categories: programming
+          plugin_languages_colors: github
+          plugin_languages_details: percentage
+          plugin_languages_ignored:
+          plugin_languages_sections: most-used
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_limit: 8
+          plugin_languages_indepth: true
+
+          # Notable contributions
+          plugin_notable: true
+          plugin_notable_from: organization
+          plugin_notable_types: commit, pull_request, issue
