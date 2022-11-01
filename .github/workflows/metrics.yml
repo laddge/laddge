@@ -22,7 +22,6 @@ jobs:
           user: laddge
           template: classic
           base: header, activity, repositories, metadata
-          config_display: large
           config_padding: 0, 10 + 8%
           config_timezone: Asia/Tokyo
           plugin_achievements: yes
