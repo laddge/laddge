@@ -6,6 +6,9 @@
 
 ![Header Image](https://user-images.githubusercontent.com/67098414/129015495-1875494e-dcdb-481b-b81f-1bfe86c9b9ee.jpg)
 
+### Profile Views
+![Profile Views](https://komarev.com/ghpvc/?username=laddge&style=for-the-badge&color=red)
+
 ### Languages & Tools
 ![Python](https://img.shields.io/badge/-Python-306998?style=for-the-badge&logo=python&logoColor=white)
 ![Javascript](https://img.shields.io/badge/-Javascript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
