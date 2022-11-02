@@ -19,6 +19,7 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Options
+          config_output: png
           user: laddge
           template: classic
           base: header, activity, repositories, metadata
