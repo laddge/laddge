@@ -44,10 +44,3 @@ jobs:
           plugin_topics_limit: 15
           plugin_topics_mode: icons
           plugin_topics_sort: stars
-          plugin_anilist: yes
-          plugin_anilist_medias: anime
-          plugin_anilist_sections: characters, watching, reading, favorites
-          plugin_anilist_limit: 5
-          plugin_anilist_shuffle: yes
-          plugin_anilist_user: .user.login
-          plugin_anilist_limit_characters: 22
